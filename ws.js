@@ -9,12 +9,11 @@ module.exports = {
   init: function(httpServer, port) {
     this.wss = new WebSocketServer({server: httpServer});
     this.registerEventHandlers();
-    console.log(`WSS Started ${port}`)
+    console.log(`WSS Started`)
   },
 
   registerEventHandlers: function() {
     this.wss.on("connection", (ws) => {
-      console.log("Connection success")
       ws.send(`Welcome to ${ws.upgradeReq.url.replace("\/", "")}!`);
       ws.on('message', (msg) => {
         switch(msg) {

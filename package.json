@@ -1,6 +1,5 @@
 {
 	"dependencies": {
-		"heroku-client": "*",
 		"ws": "*"
 	},
 	"scripts": {
