@@ -6,6 +6,7 @@ const port = 8080;
 
 module.exports = {
   startServer: function() {
+		console.log("Server started")
     wsServer.init();
     http.createServer((req, res) => {
       let input = '';

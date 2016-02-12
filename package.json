@@ -2,5 +2,8 @@
 	"dependencies": {
 		"heroku-client": "*",
 		"ws": "*"
+	},
+	"scripts": {
+		"start": "node server.js"
 	}
 }

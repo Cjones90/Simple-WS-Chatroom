@@ -7,12 +7,14 @@ const doNotSendRes = ["Client connected", "Client disconnected"];
 module.exports = {
 
   init: function() {
-    this.wss = new WebSocketServer({port: 80});
+    this.wss = new WebSocketServer({port: 5050});
     this.registerEventHandlers();
+    console.log("WSS Started on port 5050")
   },
 
   registerEventHandlers: function() {
     this.wss.on("connection", (ws) => {
+      console.log("Connection success")
       ws.send(`Welcome to ${ws.upgradeReq.url.replace("\/", "")}!`);
       ws.on('message', (msg) => {
         switch(msg) {
