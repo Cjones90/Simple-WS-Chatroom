@@ -2,7 +2,7 @@
 
 const http = require('http')
 const wsServer = require("./ws.js")
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 module.exports = {
   startServer: function() {
