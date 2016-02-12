@@ -1,24 +1,26 @@
-var http = require("http");
-var fs = require("fs");
-var url = require("url");
-var path = require("path");
-var port = process.env.PORT || 2000;
+'use strict';
 
-var server = http.createServer(function (req, res) {
-	var extname = path.extname(url.parse(req.url).pathname);
-	contentType = "text/html";
-	var file = (url.parse(req.url).pathname).slice(1, this.length);
-	if(extname !== ".js" && extname !== ".jsx") {
-		file = "index.html";
-	}
-	switch(extname) {
-		case ".js": contentType = "text/javascript";
-		case ".jsx": contentType = "text/javascript";
-		break;
-		default: contentType = "text/html";
-	}
-	res.writeHead(200, {"Content-Type": contentType})
-	res.end(fs.readFileSync(file));
-});
+const http = require('http')
+const wsServer = require("./ws.js")
+const port = 8080;
 
-server.listen(port);
+module.exports = {
+  startServer: function() {
+    wsServer.init();
+    http.createServer((req, res) => {
+      let input = '';
+      req.on('data', (buffer) => {
+        input += buffer.toString();
+      })
+      req.on('end', () => {
+        res.setHeader('Access-Control-Allow-Origin', '*')
+        res.end();
+      })
+
+    }).listen(port, console.log(`Listening on port ${port}`))
+  }
+}
+
+if(!module.parent) {
+  module.exports.startServer();
+}

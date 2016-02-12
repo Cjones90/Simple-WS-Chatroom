@@ -1,2 +1,2 @@
-# heroku-blog
-Learning Node/React/Heroku via creating this blog
+# WS
+Simple websocket server
