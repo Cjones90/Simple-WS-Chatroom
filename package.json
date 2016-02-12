@@ -1,7 +1,8 @@
 {
 	"dependencies": {
 		"heroku-client": "*",
-		"ws": "*"
+		"ws": "*",
+    "express": "^4.4.5"
 	},
 	"scripts": {
 		"start": "node server.js"
