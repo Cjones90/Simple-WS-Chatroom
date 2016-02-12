@@ -8,9 +8,14 @@ const port = process.env.PORT || 8080;
 module.exports = {
   startServer: function() {
 		console.log("Server started")
-    wsServer.init();
+    wsServer.init(port);
     http.createServer((req, res) => {
-			console.log("Http req")
+		console.log("Http req1")
+			if(req.url.indexOf('ajaxPort') > -1){
+        res.setHeader('Access-Control-Allow-Origin', '*')
+				res.end(port)''
+			}
+			console.log("Http req2")
       let input = '';
       req.on('data', (buffer) => {
         input += buffer.toString();

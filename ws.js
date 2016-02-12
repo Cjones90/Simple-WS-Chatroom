@@ -6,10 +6,10 @@ const doNotSendRes = ["Client connected", "Client disconnected"];
 
 module.exports = {
 
-  init: function() {
-    this.wss = new WebSocketServer({port: 5050});
+  init: function(port) {
+    this.wss = new WebSocketServer({port: port});
     this.registerEventHandlers();
-    console.log("WSS Started on port 5050")
+    console.log(`WSS Started on port ${port}`)
   },
 
   registerEventHandlers: function() {
