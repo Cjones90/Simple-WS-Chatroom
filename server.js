@@ -9,10 +9,11 @@ module.exports = {
   startServer: function() {
 		console.log("Server started")
     let server = http.createServer((req, res) => {
-		console.log("Http req1")
-			if(req.url.indexOf('ajaxPort') > -1){
+			console.log("Http req1")
+			if(req.url.indexOf('ajaxPort') > -1) {
         res.setHeader('Access-Control-Allow-Origin', '*')
 				res.end(port);
+				return;
 			}
 			console.log("Http req2")
       let input = '';
