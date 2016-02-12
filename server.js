@@ -13,7 +13,7 @@ module.exports = {
 		console.log("Http req1")
 			if(req.url.indexOf('ajaxPort') > -1){
         res.setHeader('Access-Control-Allow-Origin', '*')
-				res.end(port)''
+				res.end(port);
 			}
 			console.log("Http req2")
       let input = '';
